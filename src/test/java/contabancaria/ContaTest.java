@@ -189,8 +189,6 @@ class ContaTest {
     // Testes para transferir
     // Sugestão de testes:
 
-    // - Transferência com conta destino inativa lança exceção
-
     @Test
     void transferir_ValorValido_AtualizaSaldoDeAmbasAsContas() {
         var contaOrigem = new Conta("Lucas", 100);
@@ -262,6 +260,16 @@ class ContaTest {
     // - Encerrar conta com saldo lança IllegalStateException
     // - Encerrar conta já inativa lança IllegalStateException
     // - Conta encerrada tem isAtiva() == false
+
+    @Test
+    void encerrar_ContaComSaldoZero_EncerraConta() {
+        var conta = new Conta("Lucas");
+
+        conta.encerrar();
+
+        assertEquals(0, conta.getSaldo(), 0.001);
+        assertTrue(!conta.isAtiva());
+    }
     // =======================================================
 
 }
