@@ -46,6 +46,12 @@ public class Conta {
         this(titular, 0);
     }
 
+    private void validarValorPositivo(double valor) {
+        if (valor <= 0) {
+            throw new IllegalArgumentException("O valor deve ser maior que zero.");
+        }
+    }
+
     /**
      * Deposita um valor na conta.
      * Regras:
@@ -54,9 +60,7 @@ public class Conta {
      *   - O saldo deve ser atualizado corretamente .
      */
     public void depositar(double valor) {
-        if(valor <= 0) {
-            throw new IllegalArgumentException("Valor de depósito deve ser maior que zero");
-        }
+        validarValorPositivo(valor);
         if(!ativa) {
             throw new IllegalStateException("Conta inativa não pode receber depósitos");
         }
@@ -72,9 +76,7 @@ public class Conta {
      *   - O saldo deve ser atualizado corretamente.
      */
     public void sacar(double valor) {
-        if(valor <= 0) {
-            throw new IllegalArgumentException("Valor de saque deve ser maior que zero");
-        }
+        validarValorPositivo(valor);
         if(!ativa) {
             throw new IllegalStateException("Conta inativa não pode realizar saques");
         }
