@@ -188,8 +188,6 @@ class ContaTest {
     // =======================================================
     // Testes para transferir
     // Sugestão de testes:
-    // - Transferência válida atualiza saldo de ambas as contas
-    // - Transferência com saldo insuficiente lança exceção
     // - Transferência com valor zero/negativo lança exceção
     // - Transferência com conta origem inativa lança exceção
     // - Transferência com conta destino inativa lança exceção
@@ -211,6 +209,16 @@ class ContaTest {
         var contaDestino = new Conta("Maria", 50);
 
         assertThrows(IllegalStateException.class, () -> contaOrigem.transferir(contaDestino, 150));
+        assertEquals(100, contaOrigem.getSaldo(), 0.001);
+        assertEquals(50, contaDestino.getSaldo(), 0.001);
+    }
+
+    @Test
+    void transferir_ValorZero_LancaIllegalArgumentException() {
+        var contaOrigem = new Conta("Lucas", 100);
+        var contaDestino = new Conta("Maria", 50);
+
+        assertThrows(IllegalArgumentException.class, () -> contaOrigem.transferir(contaDestino, 0));
         assertEquals(100, contaOrigem.getSaldo(), 0.001);
         assertEquals(50, contaDestino.getSaldo(), 0.001);
     }
