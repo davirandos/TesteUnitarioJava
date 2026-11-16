@@ -127,12 +127,11 @@ class ContaTest {
 
     @Test
     void depositar_ContaInativa_LancaIllegalStateException() {
-        var conta = new Conta("Ana", 100);
-        // Simulando a inatividade da conta
-        // conta.encerrar(); // Supondo que exista um método para encerrar a conta
+        var conta = new Conta("Ana");
+        conta.encerrar();
 
         assertThrows(IllegalStateException.class, () -> conta.depositar(50));
-        assertEquals(100, conta.getSaldo(), 0.001);
+        assertEquals(0, conta.getSaldo(), 0.001);
     }
 
     // =======================================================

@@ -97,7 +97,12 @@ public class Conta {
      *   - A propriedade ativa deve ser alterada para false.
      */
     public void encerrar() {
-        // TODO: Implemente usando TDD
-        throw new UnsupportedOperationException();
+        if (!ativa) {
+            throw new IllegalStateException("Conta já está inativa");
+        }
+        if (saldo != 0) {
+            throw new IllegalStateException("Não é possível encerrar uma conta com saldo");
+        }
+        ativa = false;
     }
 }
