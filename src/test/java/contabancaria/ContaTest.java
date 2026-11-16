@@ -140,10 +140,6 @@ class ContaTest {
     // =======================================================
     //  Testes para sacar
     //  Sugestão de testes:
-    //    - Saque com valor válido atualiza o saldo
-    //    - Saque com valor maior que saldo lança IllegalStateException
-    //    - Saque com valor zero lança IllegalArgumentException
-    //    - Saque com valor negativo lança IllegalArgumentException
     //    - Saque em conta inativa lança IllegalStateException
 
     @Test
@@ -170,6 +166,15 @@ class ContaTest {
         assertThrows(IllegalArgumentException.class, () -> conta.sacar(0));
         assertEquals(100, conta.getSaldo(), 0.001);
     }
+
+    @Test
+    void sacar_ValorNegativo_LancaIllegalArgumentException() {
+        var conta = new Conta("Ana", 100);
+
+        assertThrows(IllegalArgumentException.class, () -> conta.sacar(-50));
+        assertEquals(100, conta.getSaldo(), 0.001);
+    }
+
 
     // =======================================================
 
