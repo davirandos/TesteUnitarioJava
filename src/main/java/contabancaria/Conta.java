@@ -72,8 +72,10 @@ public class Conta {
      *   - O saldo deve ser atualizado corretamente.
      */
     public void sacar(double valor) {
-        // TODO: Implemente usando TDD
-        throw new UnsupportedOperationException();
+        if(valor <= 0) {
+            throw new IllegalArgumentException("Valor de saque deve ser maior que zero");
+        }
+        saldo -= valor;
     }
 
     /**
