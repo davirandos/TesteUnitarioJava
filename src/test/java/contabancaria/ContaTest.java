@@ -204,6 +204,16 @@ class ContaTest {
         assertEquals(70, contaOrigem.getSaldo(), 0.001);
         assertEquals(80, contaDestino.getSaldo(), 0.001);
     }
+
+    @Test
+    void transferir_SaldoInsuficiente_LancaIllegalStateException() {
+        var contaOrigem = new Conta("Lucas", 100);
+        var contaDestino = new Conta("Maria", 50);
+
+        assertThrows(IllegalStateException.class, () -> contaOrigem.transferir(contaDestino, 150));
+        assertEquals(100, contaOrigem.getSaldo(), 0.001);
+        assertEquals(50, contaDestino.getSaldo(), 0.001);
+    }
     // =======================================================
 
     // =======================================================
