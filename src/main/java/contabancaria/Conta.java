@@ -28,11 +28,12 @@ public class Conta {
      *   - A conta deve ser criada como ativa.
      */
     public Conta(String titular, double saldoInicial) {
-        if (titular == null || titular.isBlank())
-            throw new IllegalArgumentException("O titular não pode ser nulo ou vazio.");
-        if (saldoInicial < 0)
-            throw new IllegalArgumentException("O saldo inicial não pode ser negativo.");
-
+        if (titular == null || titular.isBlank()) {
+            throw new IllegalArgumentException("Titular não pode ser nulo ou vazio");
+        }
+        if (saldoInicial < 0) {
+            throw new IllegalArgumentException("Saldo inicial não pode ser negativo");
+        }
         this.titular = titular;
         this.saldo = saldoInicial;
         this.ativa = true;
@@ -53,7 +54,7 @@ public class Conta {
      *   - O saldo deve ser atualizado corretamente.
      */
     public void depositar(double valor) {
-        // TODO: Implemente usando TDD
+        
         throw new UnsupportedOperationException();
     }
 
