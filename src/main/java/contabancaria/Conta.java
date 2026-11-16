@@ -51,7 +51,7 @@ public class Conta {
      * Regras:
      *   - Valor deve ser maior que zero (lançar IllegalArgumentException).
      *   - Conta deve estar ativa (lançar IllegalStateException).
-     *   - O saldo deve ser atualizado corretamente.
+     *   - O saldo deve ser atualizado corretamente .
      */
     public void depositar(double valor) {
         saldo += valor;
