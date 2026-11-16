@@ -54,8 +54,7 @@ public class Conta {
      *   - O saldo deve ser atualizado corretamente.
      */
     public void depositar(double valor) {
-        
-        throw new UnsupportedOperationException();
+        saldo += valor;
     }
 
     /**
