@@ -102,7 +102,9 @@ public class Conta {
         if (valor > saldo) {
             throw new IllegalStateException("Saldo insuficiente para realizar a transferência");
         }
-
+        if (destino == null) {
+            throw new IllegalArgumentException("Conta destino não pode ser nula");
+        }
         saldo -= valor;
         destino.saldo += valor;
     }
