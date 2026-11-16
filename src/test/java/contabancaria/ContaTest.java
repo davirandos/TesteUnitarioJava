@@ -155,6 +155,14 @@ class ContaTest {
         assertEquals(50, conta.getSaldo(), 0.001);
     }
 
+    @Test
+    void sacar_ValorMaiorQueSaldo_LancaIllegalStateException() {
+        var conta = new Conta("Maria", 100);
+
+        assertThrows(IllegalStateException.class, () -> conta.sacar(150));
+        assertEquals(100, conta.getSaldo(), 0.001);
+    }
+
     // =======================================================
 
 
