@@ -289,6 +289,15 @@ class ContaTest {
         assertEquals(0, conta.getSaldo(), 0.001);
         assertTrue(!conta.isAtiva());
     }
+
+    @Test 
+    void encerrar_ContaEncerrada_TornaContaInativa() {
+        var conta = new Conta("Ana");
+
+        conta.encerrar();
+
+        assertTrue(!conta.isAtiva());
+    }
     // =======================================================
 
 }
