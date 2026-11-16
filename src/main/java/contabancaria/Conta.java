@@ -75,6 +75,9 @@ public class Conta {
         if(valor <= 0) {
             throw new IllegalArgumentException("Valor de saque deve ser maior que zero");
         }
+        if(!ativa) {
+            throw new IllegalStateException("Conta inativa não pode realizar saques");
+        }
         if(valor > saldo) {
             throw new IllegalStateException("Saldo insuficiente para saque");
         }
