@@ -145,6 +145,16 @@ class ContaTest {
     //    - Saque com valor zero lança IllegalArgumentException
     //    - Saque com valor negativo lança IllegalArgumentException
     //    - Saque em conta inativa lança IllegalStateException
+
+    @Test
+    void sacar_ValorValido_AtualizaSaldo() {
+        var conta = new Conta("Lucas", 100);
+
+        conta.sacar(50);
+
+        assertEquals(50, conta.getSaldo(), 0.001);
+    }
+
     // =======================================================
 
 
