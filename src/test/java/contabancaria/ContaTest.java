@@ -180,7 +180,7 @@ class ContaTest {
         conta.encerrar();
 
         assertThrows(IllegalStateException.class, () -> conta.sacar(50));
-        assertEquals(100, conta.getSaldo(), 0.001);
+        assertEquals(0, conta.getSaldo(), 0.001);
     }
 
     // =======================================================
@@ -220,7 +220,7 @@ class ContaTest {
         assertEquals(50, contaDestino.getSaldo(), 0.001);
     }
 
-    @Test 
+    @Test
     void transferir_ValorNegativo_LancaIllegalArgumentException() {
         var contaOrigem = new Conta("Lucas", 100);
         var contaDestino = new Conta("Maria", 50);
@@ -230,7 +230,7 @@ class ContaTest {
         assertEquals(50, contaDestino.getSaldo(), 0.001);
     }
 
-    @Test 
+    @Test
     void transferir_ContaOrigemInativa_LancaIllegalStateException() {
         var contaOrigem = new Conta("Lucas");
         var contaDestino = new Conta("Maria", 50);
@@ -241,7 +241,7 @@ class ContaTest {
         assertEquals(50, contaDestino.getSaldo(), 0.001);
     }
 
-    @Test 
+    @Test
     void transferir_ContaDestinoInativa_LancaIllegalStateException() {
         var contaOrigem = new Conta("Lucas", 100);
         var contaDestino = new Conta("Maria");
@@ -256,9 +256,6 @@ class ContaTest {
     // =======================================================
     // Testes para encerrar
     // Sugestão de testes:
-    // - Encerrar conta com saldo zero funciona
-    // - Encerrar conta com saldo lança IllegalStateException
-    // - Encerrar conta já inativa lança IllegalStateException
     // - Conta encerrada tem isAtiva() == false
 
     @Test
@@ -271,7 +268,7 @@ class ContaTest {
         assertTrue(!conta.isAtiva());
     }
 
-    @Test 
+    @Test
     void encerrar_ContaComSaldo_LancaIllegalStateException() {
         var conta = new Conta("Maria", 100);
 
@@ -280,7 +277,7 @@ class ContaTest {
         assertTrue(conta.isAtiva());
     }
 
-    @Test 
+    @Test
     void encerrar_ContaJaInativa_LancaIllegalStateException() {
         var conta = new Conta("João");
         conta.encerrar();
@@ -290,7 +287,7 @@ class ContaTest {
         assertTrue(!conta.isAtiva());
     }
 
-    @Test 
+    @Test
     void encerrar_ContaEncerrada_TornaContaInativa() {
         var conta = new Conta("Ana");
 
@@ -298,6 +295,7 @@ class ContaTest {
 
         assertTrue(!conta.isAtiva());
     }
+
     // =======================================================
 
 }
