@@ -54,6 +54,9 @@ public class Conta {
      *   - O saldo deve ser atualizado corretamente .
      */
     public void depositar(double valor) {
+        if(valor <= 0) {
+            throw new IllegalArgumentException("Valor de depósito deve ser maior que zero");
+        }
         saldo += valor;
     }
 
